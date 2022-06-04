@@ -1,0 +1,23 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "MrRezaYazdani@yahoo.com",
+                "Name": "Mr Yazdan [Reza Yazdani]"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "A Widget to Show Public IP Address and VPN status",
+        "Icon": "ipflag.png",
+        "Id": "com.github.mryazdan.ipflag",
+        "License": "GPL-3.0+",
+        "Name": "Public IP Flag + VPN Status",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "1.0.0",
+        "Website": "https://github.com/MrYazdan/ipflag"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml"
+}
