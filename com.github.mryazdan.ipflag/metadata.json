@@ -8,7 +8,7 @@
         ],
         "Category": "System Information",
         "Description": "A Widget to Show Public IP Address and VPN status",
-        "Icon": "ipflag.png",
+        "Icon": "ipflag.svg",
         "Id": "com.github.mryazdan.ipflag",
         "License": "GPL-3.0+",
         "Name": "Public IP Flag + VPN Status",
