@@ -231,14 +231,14 @@ Item {
 
 		var country = root.jsonData.countryCode.toLowerCase()
 		if (isToolTipArea) {
-			return Qt.resolvedUrl("../icons/4x3/" + country + ".svg")
+			return Qt.resolvedUrl("../icons/flags/" + country + ".svg")
 		}
 
 		if (!showFlagInCompact) {
 			return Qt.resolvedUrl(globe_icon_path)
 		}
 
-		return Qt.resolvedUrl("../icons/4x3/" + country + ".svg")
+		return Qt.resolvedUrl("../icons/flags/" + country + ".svg")
 	}
 
 	Plasmoid.compactRepresentation: MouseArea {
@@ -324,17 +324,18 @@ Item {
 		PlasmaCore.ToolTipArea {
 	        anchors.fill: parent
 	        icon: getIconPath(true)
-	        mainText: i18n('Public IP Address')
+	        mainText: 'IP Flag - Version 1.0'
 			subText: {
-				var details = i18n("Public IP Address: ")
+				var details = "IP : "
 				if (root.jsonData !== undefined) {
 					details += "<b>" + root.jsonData.query + "</b>"
 					details += "<br/>"
-					details += i18n("Connected to: ")
-					details += "<b>" + root.jsonData.countryCode + ", " + root.jsonData.regionName + ", " + root.jsonData.city + "</b>"
+					details += "Country : " + "<b>" + root.jsonData.countryCode + "</b>" + "<br/>"
+					details += "Region : " + "<b>" + root.jsonData.regionName + "</b>" + "<br/>"
+					details += "City : " + "<b>" + root.jsonData.city + "</b>"
 				}
 				else {
-					details += details += "<b>N/A</b>"
+					details += details += "<b> Please connect your internet</b>"
 				}
 				return details
 			}

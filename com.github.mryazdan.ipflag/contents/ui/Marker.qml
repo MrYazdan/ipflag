@@ -8,7 +8,7 @@ MapQuickItem{
     z: my_map.z + 1
     sourceItem: Image{
         id: icon
-        source: "../icons/marker.png"
+        source: "../icons/global/marker.png"
         sourceSize.width: 40
         sourceSize.height: 40
     }
