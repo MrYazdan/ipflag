@@ -93,21 +93,21 @@ Item {
 			prevVPNstatus = curVPNstatus
 			if (vpnKeywords !== ""){
 				if (stdout === "") {
-					vpn_svg.imagePath = Qt.resolvedUrl("../icons/vpn-shield-off.svg")
+					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/off.png")
 					curVPNstatus = "inactive"
 				}
 				else {
-					vpn_svg.imagePath = Qt.resolvedUrl("../icons/vpn-shield-on.svg")
+					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/on.png")
 					curVPNstatus = "active"
 				}
 				
 				if (stderr !== "") {
-					vpn_svg.imagePath = Qt.resolvedUrl("../icons/question-mark.svg")
+					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/nonet.png")
 					curVPNstatus = "unknown"
 				}
 			}
 			else {
-				vpn_svg.imagePath = Qt.resolvedUrl("../icons/question-mark.svg")
+				vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/nonet.png")
 				curVPNstatus = "unknown"
 			}
 
@@ -152,7 +152,7 @@ Item {
 
 	PlasmaCore.Svg {
 		id: vpn_svg
-		imagePath: Qt.resolvedUrl("../icons/vpn-shield-off.svg")
+		imagePath: Qt.resolvedUrl("../icons/global/off.png")
 	}
 
 	function getIPdata(successCallback, failureCallback) {
