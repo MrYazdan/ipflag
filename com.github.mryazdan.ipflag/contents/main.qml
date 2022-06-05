@@ -20,7 +20,7 @@ Item {
 	readonly property bool showFlagInCompact: plasmoid.configuration.showFlagInCompact
 	readonly property bool showVPNIcon: plasmoid.configuration.showVPNIcon
 	readonly property bool showIPInCompact: plasmoid.configuration.showIPInCompact
-	readonly property string globe_icon_path: "../icons/globe.svg"
+	readonly property string globe_icon_path: "../icons/ipflag.png"
 	readonly property bool useLabelThemeColor: plasmoid.configuration.useLabelThemeColor
     readonly property string labelColor: plasmoid.configuration.labelColor
     readonly property string vpnKeywords: plasmoid.configuration.vpnKeywords
