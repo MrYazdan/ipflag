@@ -1,0 +1,15 @@
+import org.kde.plasma.configuration 2.0
+
+ConfigModel {
+    ConfigCategory {
+        name: "General"
+        icon: "preferences-desktop-user"
+        source: "config/configGeneral.qml"
+    }
+
+    ConfigCategory {
+        name: "Appearance"
+        icon: "applications-graphics"
+        source: "config/configAppearance.qml"
+    }
+}
