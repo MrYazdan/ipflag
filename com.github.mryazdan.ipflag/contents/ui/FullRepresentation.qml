@@ -118,7 +118,7 @@ Item {
             Layout.preferredWidth: 300
 
             QtControls.Label {
-                text: i18n("IP address:")
+                text: "IP : "
                 color: useLabelThemeColor ? theme.textColor : labelColor
             }
 
@@ -127,7 +127,7 @@ Item {
             }
 
             QtControls.Label {
-                text: i18n("Country:")
+                text: "Country : "
                 color: useLabelThemeColor ? theme.textColor : labelColor
             }
 
@@ -136,7 +136,7 @@ Item {
             }
 
             QtControls.Label {
-                text: i18n("Region:")
+                text: "Region : "
                 color: useLabelThemeColor ? theme.textColor : labelColor
             }
 
@@ -144,17 +144,9 @@ Item {
                 text: jsonData !== undefined && jsonData.regionName ? jsonData.regionName : "N/A"
             }
 
-            QtControls.Label {
-                text: i18n("Postal Code:")
-                color: useLabelThemeColor ? theme.textColor : labelColor
-            }
-
-            LabelDelegate {
-                text: jsonData !== undefined && jsonData.zip ? jsonData.zip : "N/A"
-            }
 
             QtControls.Label {
-                text: i18n("City:")
+                text: "City : "
                 color: useLabelThemeColor ? theme.textColor : labelColor
             }
 
@@ -162,44 +154,6 @@ Item {
                 text: jsonData !== undefined && jsonData.city ? jsonData.city : "N/A"
             }
 
-            QtControls.Label {
-                text: i18n("Coordinates:")
-                color: useLabelThemeColor ? theme.textColor : labelColor
-            }
-
-            LabelDelegate {
-                text: jsonData !== undefined && jsonData.lat ? `${jsonData.lat},${jsonData.lon}` : "N/A"
-            }
-
-            QtControls.Label {
-                text: i18n("Hostname:")
-                color: useLabelThemeColor ? theme.textColor : labelColor
-                visible: showHostname
-            }
-
-            LabelDelegate {
-                text: jsonData !== undefined && jsonData.as ? jsonData.as : "N/A"
-                visible: showHostname
-            }
-
-            QtControls.Label {
-                Layout.columnSpan: 2
-                // Fix issue https://github.com/Davide-sd/ip_address/issues/8
-                Layout.alignment: Qt.AlignHCenter
-                // anchors.horizontalCenter: parent.horizontalCenter
-                color: useLinkThemeColor ? theme.highlightColor : linkColor
-                font.bold: true
-                wrapMode: Text.Wrap
-                text: jsonData !== undefined ? i18n("Open map in the browser") : "N/A"
-                visible: jsonData !== undefined
-
-                MouseArea {
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: false
-                    onClicked: Qt.openUrlExternally(mapLink)
-                }
-            }
 
             QtControls.Button {
                 Layout.columnSpan: 2
@@ -207,7 +161,7 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 // anchors.horizontalCenter: parent.horizontalCenter
                 Layout.preferredWidth: parent.width
-                text: i18n("Update")
+                text: "Update"
                 onClicked: {
                     debug_print("### [Update onClicked]")
                     root.reloadData()
