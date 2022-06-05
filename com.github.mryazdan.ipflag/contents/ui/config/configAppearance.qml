@@ -1,3 +1,19 @@
+/*
+ *  Copyright 2019 Davide Sandona' <sandona.davide@gmail.com>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0 as QtControls
@@ -27,13 +43,13 @@ ColumnLayout {
 
     QtControls.GroupBox {
         Layout.fillWidth: true
-        title: "Map configurations"
+        title: i18n("Map configurations")
 
         ColumnLayout {
 
             RowLayout {
                 QtControls.Label {
-                    text: 'Map Size:'
+                    text: i18n('Map Size:')
                 }
 
                 QtControls.SpinBox {
@@ -48,7 +64,7 @@ ColumnLayout {
 
             RowLayout {
                 QtControls.Label {
-                    text: 'Default zoom level:'
+                    text: i18n('Default zoom level:')
                 }
 
                 QtControls.SpinBox {
@@ -65,18 +81,18 @@ ColumnLayout {
 
     QtControls.GroupBox {
         Layout.fillWidth: true
-        title: "Layout"
+        title: i18n("Layout")
 
         ColumnLayout {
             QtControls.ExclusiveGroup { id: displayOrderGroup }
             QtControls.RadioButton {
                 id: layoutRow
-                text: 'Use horizontal layout'
+                text: i18n('Use horizontal layout')
                 exclusiveGroup: displayOrderGroup
             }
             QtControls.RadioButton {
                 id: layoutColumn
-                text: 'Use vertical layout'
+                text: i18n('Use vertical layout')
                 checked: !layoutRow.checked
                 exclusiveGroup: displayOrderGroup
             }
@@ -85,7 +101,7 @@ ColumnLayout {
 
     QtControls.GroupBox {
         Layout.fillWidth: true
-        title: "Set Custom Colors"
+        title: i18n("Set Custom Colors")
 
         GridLayout {
             id: labelsContainer
@@ -97,7 +113,7 @@ ColumnLayout {
 
             QtControls.CheckBox {
                 id: labelThemeColorCheckBox
-                text: "Use Label Theme Color"
+                text: i18n("Use Label Theme Color")
             }
 
             QtControls.Button {
@@ -117,7 +133,7 @@ ColumnLayout {
 
             QtControls.CheckBox {
                 id: linkThemeColorCheckBox
-                text: "Use Links Theme Color"
+                text: i18n("Use Links Theme Color")
             }
 
             QtControls.Button {
@@ -145,6 +161,16 @@ ColumnLayout {
     ColorDialog {
         id: linkColorDialog
         onAccepted: cfg_linkColor = this.color
+    }
+
+    QtControls.GroupBox {
+        Layout.fillWidth: true
+        title: i18n("Others")
+
+        QtControls.CheckBox {
+            id: showHostname
+            text: i18n("Show host name")
+        }
     }
 
     Item { // tighten layout

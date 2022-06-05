@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Flag IP Address
+Name=IP Flag
 Comment=Shows Flag Public IP Address and VPN status
 
 Type=Service
@@ -11,8 +11,8 @@ X-Plasma-MainScript=ui/main.qml
 
 X-KDE-PluginInfo-Author=Reza Yazdani
 X-KDE-PluginInfo-Email=mrrezayazdani@yahoo.com
-X-KDE-PluginInfo-Name=com.github.mryazdan.ipaddress
+X-KDE-PluginInfo-Name=com.github.mryazdan.ipflag
 X-KDE-PluginInfo-Version=1.0
 X-KDE-PluginInfo-Category=Utilities
 X-KDE-PluginInfo-License=GPL3
-X-KDE-PluginInfo-Website=https://github.com/MrYazdan/ip_address
+X-KDE-PluginInfo-Website=https://github.com/MrYazdan/ipflag

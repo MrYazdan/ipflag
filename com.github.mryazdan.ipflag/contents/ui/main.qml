@@ -1,3 +1,29 @@
+/*
+ *  Copyright 2019 Davide Sandona' <sandona.davide@gmail.com>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+
+/*
+TODO:
+1. After loading the widgets, go to settings -> Check "Show Hostname"
+    -> Click OK -> The plugin freeze, no errors, no messages... WTF?
+2. Center the map when opening full representation. As of now, if you scroll
+	and move the minimap, then close the full representation, then reopen it,
+	the map will be centered on the last known position, not in the marker
+*/
+
 import QtQuick 2.2
 import QtQuick.Controls 1.1 as QtControls
 import QtQuick.Layouts 1.1
@@ -20,7 +46,7 @@ Item {
 	readonly property bool showFlagInCompact: plasmoid.configuration.showFlagInCompact
 	readonly property bool showVPNIcon: plasmoid.configuration.showVPNIcon
 	readonly property bool showIPInCompact: plasmoid.configuration.showIPInCompact
-	readonly property string globe_icon_path: "../icons/ipflag.svg"
+	readonly property string globe_icon_path: "../icons/global/nonet.svg"
 	readonly property bool useLabelThemeColor: plasmoid.configuration.useLabelThemeColor
     readonly property string labelColor: plasmoid.configuration.labelColor
     readonly property string vpnKeywords: plasmoid.configuration.vpnKeywords
@@ -93,21 +119,21 @@ Item {
 			prevVPNstatus = curVPNstatus
 			if (vpnKeywords !== ""){
 				if (stdout === "") {
-					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/off.png")
+					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/off.svg")
 					curVPNstatus = "inactive"
 				}
 				else {
-					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/on.png")
+					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/on.svg")
 					curVPNstatus = "active"
 				}
 				
 				if (stderr !== "") {
-					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/nonet.png")
+					vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/question-mark.svg")
 					curVPNstatus = "unknown"
 				}
 			}
 			else {
-				vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/nonet.png")
+				vpn_svg.imagePath = Qt.resolvedUrl("../icons/global/question-mark.svg")
 				curVPNstatus = "unknown"
 			}
 
@@ -152,7 +178,7 @@ Item {
 
 	PlasmaCore.Svg {
 		id: vpn_svg
-		imagePath: Qt.resolvedUrl("../icons/global/off.png")
+		imagePath: Qt.resolvedUrl("../icons/global/off.svg")
 	}
 
 	function getIPdata(successCallback, failureCallback) {
@@ -324,18 +350,17 @@ Item {
 		PlasmaCore.ToolTipArea {
 	        anchors.fill: parent
 	        icon: getIconPath(true)
-	        mainText: 'IP Flag - Version 1.0'
+	        mainText: i18n('Public IP Address')
 			subText: {
-				var details = "IP : "
+				var details = i18n("Public IP Address: ")
 				if (root.jsonData !== undefined) {
 					details += "<b>" + root.jsonData.query + "</b>"
 					details += "<br/>"
-					details += "Country : " + "<b>" + root.jsonData.countryCode + "</b>" + "<br/>"
-					details += "Region : " + "<b>" + root.jsonData.regionName + "</b>" + "<br/>"
-					details += "City : " + "<b>" + root.jsonData.city + "</b>"
+					details += i18n("Connected to: ")
+					details += "<b>" + root.jsonData.countryCode + ", " + root.jsonData.regionName + ", " + root.jsonData.city + "</b>"
 				}
 				else {
-					details += details += "<b> Please connect your internet</b>"
+					details += details += "<b>N/A</b>"
 				}
 				return details
 			}
